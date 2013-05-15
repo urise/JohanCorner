@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JohanCorner", "JohanCorner\JohanCorner.csproj", "{48813946-0C39-4CB9-91E4-F00F4FD0FDD7}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "AzureDeploy", "AzureDeploy\AzureDeploy.ccproj", "{9F906EA8-DAFC-44C3-B43F-9FD3CC423A3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48813946-0C39-4CB9-91E4-F00F4FD0FDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48813946-0C39-4CB9-91E4-F00F4FD0FDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48813946-0C39-4CB9-91E4-F00F4FD0FDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48813946-0C39-4CB9-91E4-F00F4FD0FDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F906EA8-DAFC-44C3-B43F-9FD3CC423A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F906EA8-DAFC-44C3-B43F-9FD3CC423A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F906EA8-DAFC-44C3-B43F-9FD3CC423A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F906EA8-DAFC-44C3-B43F-9FD3CC423A3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
