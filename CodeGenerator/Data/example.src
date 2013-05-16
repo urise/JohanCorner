@@ -1,0 +1,19 @@
+table Salaries:Salary
+	SalaryId int identity not null PK
+	State bit not null
+	DateFrom datetime not null
+	UserId int not null => Users
+	Amount varchar(256) not null
+
+table TransactionTypes:TransactionType
+	TransactionTypeId int not null identity PK
+	State bit not null
+	TransactionTypeName varchar(64) not null
+
+table Transactions:Transaction
+	TransactionId int identity not null PK
+	State bit not null
+	TransactionTypeId int not null => TransactionTypes
+	TransactionDate datetime not null
+	UserId int not null => Users
+	Amount varchar(256) not null

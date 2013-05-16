@@ -1,0 +1,82 @@
+table Instances:Instance
+	InstanceId int identity not null PK
+	InstanceName varchar(200) not null
+	
+table Users:User
+	UserId int identity not null PK
+	Login varchar(128) not null
+	Password varchar(1024) not null
+	Email varchar(100) null
+	UserFIO varchar(100) null
+	RegistrationCode varchar(10) null
+	IsActive bit not null default 1
+	
+table Variables:Variable
+	VariableId int identity not null PK
+	InstanceId int not null => Instances
+	VariableKey varchar(128) not null
+	VariableValue varchar(max) not null
+	
+table DataLogs:DataLog
+	DataLogId int identity not null PK
+	InstanceId int null => Instances
+	UserId int not null => Users
+	OperationTime datetime not null
+	TableName varchar(128) not null
+	RecordId int not null
+	Operation varchar(1) not null
+	Details varchar(max) not null
+	TransactionNumber int null
+
+table Blobs:Blob
+	BlobId int identity not null PK
+	InstanceId int not null => Instances
+	Data varbinary(max) not null
+	
+table Images:Image
+	ImageId int identity not null PK
+	InstanceId int not null => Instances
+	BlobId int not null => Blobs
+	ImageName varchar(128) not null
+	ImageType varchar(4) not null
+	ImageSize int not null
+	
+table UserInstanceUsages:UserInstanceUsage
+	UserInstanceUsageId int identity not null PK
+	UserId int not null => Users
+	UsedInstanceId int not null => Instances(InstanceId)
+	Date datetime not null
+	
+table TemporaryCodes:TemporaryCode
+	TemporaryCodeId int identity not null PK
+	UserId int not null => Users
+	Code varchar(10) not null
+	ExpireDate datetime not null
+	
+table Roles:Role
+	RoleId int identity not null PK
+	InstanceId int not null => Instances
+	Name varchar(128) not null
+	Type int not null
+	
+table UsersToRoles:UsersToRole
+	UserRoleId int identity not null PK
+	InstanceId int not null => Instances
+	UserId int not null => Users
+	RoleId int not null => Roles
+	
+table Components:Component
+	ComponentId int not null PK
+	Name varchar(128) not null
+	IsReadOnlyAccess bit not null
+	
+table ComponentsToRoles:ComponentsToRole
+	ComponentToRoleId int identity not null PK
+	InstanceId int not null => Instances
+	ComponentId int not null => Components
+	RoleId int not null => Roles
+	AccessLevel int not null
+
+table TransactionSeqs:TransactionSeq
+	TransactionSeqId int identity not null PK
+	
