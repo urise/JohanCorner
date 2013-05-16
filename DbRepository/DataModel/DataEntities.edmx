@@ -1,0 +1,1074 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DataModelStoreContainer">
+          <EntitySet Name="Blobs" EntityType="DataModel.Store.Blobs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Components" EntityType="DataModel.Store.Components" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ComponentsToRoles" EntityType="DataModel.Store.ComponentsToRoles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DataLogs" EntityType="DataModel.Store.DataLogs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dev_InstalledScripts" EntityType="DataModel.Store.dev_InstalledScripts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Images" EntityType="DataModel.Store.Images" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Instances" EntityType="DataModel.Store.Instances" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Roles" EntityType="DataModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TemporaryCodes" EntityType="DataModel.Store.TemporaryCodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TransactionSeqs" EntityType="DataModel.Store.TransactionSeqs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserInstanceUsages" EntityType="DataModel.Store.UserInstanceUsages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="DataModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UsersToRoles" EntityType="DataModel.Store.UsersToRoles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Variables" EntityType="DataModel.Store.Variables" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Blobs_Instances" Association="DataModel.Store.FK_Blobs_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="Blobs" EntitySet="Blobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComponentsToRoles_Components" Association="DataModel.Store.FK_ComponentsToRoles_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="ComponentsToRoles" EntitySet="ComponentsToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComponentsToRoles_Instances" Association="DataModel.Store.FK_ComponentsToRoles_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="ComponentsToRoles" EntitySet="ComponentsToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComponentsToRoles_Roles" Association="DataModel.Store.FK_ComponentsToRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="ComponentsToRoles" EntitySet="ComponentsToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataLogs_Instances" Association="DataModel.Store.FK_DataLogs_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="DataLogs" EntitySet="DataLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataLogs_Users" Association="DataModel.Store.FK_DataLogs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DataLogs" EntitySet="DataLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Blobs" Association="DataModel.Store.FK_Images_Blobs">
+            <End Role="Blobs" EntitySet="Blobs" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Instances" Association="DataModel.Store.FK_Images_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_Instances" Association="DataModel.Store.FK_Roles_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemporaryCodes_Users" Association="DataModel.Store.FK_TemporaryCodes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TemporaryCodes" EntitySet="TemporaryCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInstanceUsages_Users" Association="DataModel.Store.FK_UserInstanceUsages_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserInstanceUsages" EntitySet="UserInstanceUsages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInstanceUsagesUsedInstanceId_Instances" Association="DataModel.Store.FK_UserInstanceUsagesUsedInstanceId_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="UserInstanceUsages" EntitySet="UserInstanceUsages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersToRoles_Instances" Association="DataModel.Store.FK_UsersToRoles_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="UsersToRoles" EntitySet="UsersToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersToRoles_Roles" Association="DataModel.Store.FK_UsersToRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UsersToRoles" EntitySet="UsersToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersToRoles_Users" Association="DataModel.Store.FK_UsersToRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersToRoles" EntitySet="UsersToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variables_Instances" Association="DataModel.Store.FK_Variables_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="Variables" EntitySet="Variables" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Blobs">
+          <Key>
+            <PropertyRef Name="BlobId" />
+          </Key>
+          <Property Name="BlobId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="int" Nullable="false" />
+          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Components">
+          <Key>
+            <PropertyRef Name="ComponentId" />
+          </Key>
+          <Property Name="ComponentId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="IsReadOnlyAccess" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComponentsToRoles">
+          <Key>
+            <PropertyRef Name="ComponentToRoleId" />
+          </Key>
+          <Property Name="ComponentToRoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="int" Nullable="false" />
+          <Property Name="ComponentId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="AccessLevel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataLogs">
+          <Key>
+            <PropertyRef Name="DataLogId" />
+          </Key>
+          <Property Name="DataLogId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="OperationTime" Type="datetime" Nullable="false" />
+          <Property Name="TableName" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="RecordId" Type="int" Nullable="false" />
+          <Property Name="Operation" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="Details" Type="varchar(max)" Nullable="false" />
+          <Property Name="TransactionNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="dev_InstalledScripts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="release" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="iteration" Type="int" Nullable="false" />
+          <Property Name="dbawebPackage" Type="varchar" MaxLength="256" />
+          <Property Name="filename" Type="varchar" MaxLength="256" />
+          <Property Name="versionNumber" Type="int" Nullable="false" />
+          <Property Name="success" Type="bit" Nullable="false" />
+          <Property Name="errorMessage" Type="varchar(max)" />
+          <Property Name="errorLine" Type="int" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="int" Nullable="false" />
+          <Property Name="BlobId" Type="int" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="ImageType" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="ImageSize" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Instances">
+          <Key>
+            <PropertyRef Name="InstanceId" />
+          </Key>
+          <Property Name="InstanceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceName" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="Type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemporaryCodes">
+          <Key>
+            <PropertyRef Name="TemporaryCodeId" />
+          </Key>
+          <Property Name="TemporaryCodeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ExpireDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionSeqs">
+          <Key>
+            <PropertyRef Name="TransactionSeqId" />
+          </Key>
+          <Property Name="TransactionSeqId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="UserInstanceUsages">
+          <Key>
+            <PropertyRef Name="UserInstanceUsageId" />
+          </Key>
+          <Property Name="UserInstanceUsageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UsedInstanceId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="1024" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="UserFIO" Type="varchar" MaxLength="100" />
+          <Property Name="RegistrationCode" Type="varchar" MaxLength="10" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersToRoles">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Variables">
+          <Key>
+            <PropertyRef Name="VariableId" />
+          </Key>
+          <Property Name="VariableId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="int" Nullable="false" />
+          <Property Name="VariableKey" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="VariableValue" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Blobs_Instances">
+          <End Role="Instances" Type="DataModel.Store.Instances" Multiplicity="1" />
+          <End Role="Blobs" Type="DataModel.Store.Blobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="Blobs">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComponentsToRoles_Components">
+          <End Role="Components" Type="DataModel.Store.Components" Multiplicity="1" />
+          <End Role="ComponentsToRoles" Type="DataModel.Store.ComponentsToRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="ComponentId" />
+            </Principal>
+            <Dependent Role="ComponentsToRoles">
+              <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComponentsToRoles_Instances">
+          <End Role="Instances" Type="DataModel.Store.Instances" Multiplicity="1" />
+          <End Role="ComponentsToRoles" Type="DataModel.Store.ComponentsToRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="ComponentsToRoles">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComponentsToRoles_Roles">
+          <End Role="Roles" Type="DataModel.Store.Roles" Multiplicity="1" />
+          <End Role="ComponentsToRoles" Type="DataModel.Store.ComponentsToRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="ComponentsToRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataLogs_Instances">
+          <End Role="Instances" Type="DataModel.Store.Instances" Multiplicity="0..1" />
+          <End Role="DataLogs" Type="DataModel.Store.DataLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="DataLogs">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataLogs_Users">
+          <End Role="Users" Type="DataModel.Store.Users" Multiplicity="1" />
+          <End Role="DataLogs" Type="DataModel.Store.DataLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="DataLogs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Blobs">
+          <End Role="Blobs" Type="DataModel.Store.Blobs" Multiplicity="1" />
+          <End Role="Images" Type="DataModel.Store.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blobs">
+              <PropertyRef Name="BlobId" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="BlobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Instances">
+          <End Role="Instances" Type="DataModel.Store.Instances" Multiplicity="1" />
+          <End Role="Images" Type="DataModel.Store.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_Instances">
+          <End Role="Instances" Type="DataModel.Store.Instances" Multiplicity="1" />
+          <End Role="Roles" Type="DataModel.Store.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemporaryCodes_Users">
+          <End Role="Users" Type="DataModel.Store.Users" Multiplicity="1" />
+          <End Role="TemporaryCodes" Type="DataModel.Store.TemporaryCodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="TemporaryCodes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInstanceUsages_Users">
+          <End Role="Users" Type="DataModel.Store.Users" Multiplicity="1" />
+          <End Role="UserInstanceUsages" Type="DataModel.Store.UserInstanceUsages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserInstanceUsages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInstanceUsagesUsedInstanceId_Instances">
+          <End Role="Instances" Type="DataModel.Store.Instances" Multiplicity="1" />
+          <End Role="UserInstanceUsages" Type="DataModel.Store.UserInstanceUsages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="UserInstanceUsages">
+              <PropertyRef Name="UsedInstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersToRoles_Instances">
+          <End Role="Instances" Type="DataModel.Store.Instances" Multiplicity="1" />
+          <End Role="UsersToRoles" Type="DataModel.Store.UsersToRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="UsersToRoles">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersToRoles_Roles">
+          <End Role="Roles" Type="DataModel.Store.Roles" Multiplicity="1" />
+          <End Role="UsersToRoles" Type="DataModel.Store.UsersToRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UsersToRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersToRoles_Users">
+          <End Role="Users" Type="DataModel.Store.Users" Multiplicity="1" />
+          <End Role="UsersToRoles" Type="DataModel.Store.UsersToRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersToRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variables_Instances">
+          <End Role="Instances" Type="DataModel.Store.Instances" Multiplicity="1" />
+          <End Role="Variables" Type="DataModel.Store.Variables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="Variables">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="JohanCornerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Blobs" EntityType="DataModel.Blob" />
+          <EntitySet Name="Components" EntityType="DataModel.Component" />
+          <EntitySet Name="ComponentsToRoles" EntityType="DataModel.ComponentsToRole" />
+          <EntitySet Name="DataLogs" EntityType="DataModel.DataLog" />
+          <EntitySet Name="dev_InstalledScripts" EntityType="DataModel.dev_InstalledScripts" />
+          <EntitySet Name="Images" EntityType="DataModel.Image" />
+          <EntitySet Name="Instances" EntityType="DataModel.Instance" />
+          <EntitySet Name="Roles" EntityType="DataModel.Role" />
+          <EntitySet Name="TemporaryCodes" EntityType="DataModel.TemporaryCode" />
+          <EntitySet Name="TransactionSeqs" EntityType="DataModel.TransactionSeq" />
+          <EntitySet Name="UserInstanceUsages" EntityType="DataModel.UserInstanceUsage" />
+          <EntitySet Name="Users" EntityType="DataModel.User" />
+          <EntitySet Name="UsersToRoles" EntityType="DataModel.UsersToRole" />
+          <EntitySet Name="Variables" EntityType="DataModel.Variable" />
+          <AssociationSet Name="FK_Blobs_Instances" Association="DataModel.FK_Blobs_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="Blobs" EntitySet="Blobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Blobs" Association="DataModel.FK_Images_Blobs">
+            <End Role="Blobs" EntitySet="Blobs" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComponentsToRoles_Components" Association="DataModel.FK_ComponentsToRoles_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="ComponentsToRoles" EntitySet="ComponentsToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComponentsToRoles_Instances" Association="DataModel.FK_ComponentsToRoles_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="ComponentsToRoles" EntitySet="ComponentsToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComponentsToRoles_Roles" Association="DataModel.FK_ComponentsToRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="ComponentsToRoles" EntitySet="ComponentsToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataLogs_Instances" Association="DataModel.FK_DataLogs_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="DataLogs" EntitySet="DataLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataLogs_Users" Association="DataModel.FK_DataLogs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DataLogs" EntitySet="DataLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Instances" Association="DataModel.FK_Images_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_Instances" Association="DataModel.FK_Roles_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInstanceUsagesUsedInstanceId_Instances" Association="DataModel.FK_UserInstanceUsagesUsedInstanceId_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="UserInstanceUsages" EntitySet="UserInstanceUsages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersToRoles_Instances" Association="DataModel.FK_UsersToRoles_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="UsersToRoles" EntitySet="UsersToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variables_Instances" Association="DataModel.FK_Variables_Instances">
+            <End Role="Instances" EntitySet="Instances" />
+            <End Role="Variables" EntitySet="Variables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersToRoles_Roles" Association="DataModel.FK_UsersToRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UsersToRoles" EntitySet="UsersToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemporaryCodes_Users" Association="DataModel.FK_TemporaryCodes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TemporaryCodes" EntitySet="TemporaryCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInstanceUsages_Users" Association="DataModel.FK_UserInstanceUsages_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserInstanceUsages" EntitySet="UserInstanceUsages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersToRoles_Users" Association="DataModel.FK_UsersToRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersToRoles" EntitySet="UsersToRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Blob">
+          <Key>
+            <PropertyRef Name="BlobId" />
+          </Key>
+          <Property Name="BlobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Instance" Relationship="DataModel.FK_Blobs_Instances" FromRole="Blobs" ToRole="Instances" />
+          <NavigationProperty Name="Images" Relationship="DataModel.FK_Images_Blobs" FromRole="Blobs" ToRole="Images" />
+        </EntityType>
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="ComponentId" />
+          </Key>
+          <Property Name="ComponentId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="IsReadOnlyAccess" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ComponentsToRoles" Relationship="DataModel.FK_ComponentsToRoles_Components" FromRole="Components" ToRole="ComponentsToRoles" />
+        </EntityType>
+        <EntityType Name="ComponentsToRole">
+          <Key>
+            <PropertyRef Name="ComponentToRoleId" />
+          </Key>
+          <Property Name="ComponentToRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="Int32" Nullable="false" />
+          <Property Name="ComponentId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="AccessLevel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Component" Relationship="DataModel.FK_ComponentsToRoles_Components" FromRole="ComponentsToRoles" ToRole="Components" />
+          <NavigationProperty Name="Instance" Relationship="DataModel.FK_ComponentsToRoles_Instances" FromRole="ComponentsToRoles" ToRole="Instances" />
+          <NavigationProperty Name="Role" Relationship="DataModel.FK_ComponentsToRoles_Roles" FromRole="ComponentsToRoles" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="DataLog">
+          <Key>
+            <PropertyRef Name="DataLogId" />
+          </Key>
+          <Property Name="DataLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="OperationTime" Type="DateTime" Nullable="false" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="RecordId" Type="Int32" Nullable="false" />
+          <Property Name="Operation" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="Details" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="TransactionNumber" Type="Int32" />
+          <NavigationProperty Name="Instance" Relationship="DataModel.FK_DataLogs_Instances" FromRole="DataLogs" ToRole="Instances" />
+          <NavigationProperty Name="User" Relationship="DataModel.FK_DataLogs_Users" FromRole="DataLogs" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="dev_InstalledScripts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="release" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="iteration" Type="Int32" Nullable="false" />
+          <Property Name="dbawebPackage" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="filename" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="versionNumber" Type="Int32" Nullable="false" />
+          <Property Name="success" Type="Boolean" Nullable="false" />
+          <Property Name="errorMessage" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="errorLine" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="Int32" Nullable="false" />
+          <Property Name="BlobId" Type="Int32" Nullable="false" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="ImageType" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="ImageSize" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Blob" Relationship="DataModel.FK_Images_Blobs" FromRole="Images" ToRole="Blobs" />
+          <NavigationProperty Name="Instance" Relationship="DataModel.FK_Images_Instances" FromRole="Images" ToRole="Instances" />
+        </EntityType>
+        <EntityType Name="Instance">
+          <Key>
+            <PropertyRef Name="InstanceId" />
+          </Key>
+          <Property Name="InstanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Blobs" Relationship="DataModel.FK_Blobs_Instances" FromRole="Instances" ToRole="Blobs" />
+          <NavigationProperty Name="ComponentsToRoles" Relationship="DataModel.FK_ComponentsToRoles_Instances" FromRole="Instances" ToRole="ComponentsToRoles" />
+          <NavigationProperty Name="DataLogs" Relationship="DataModel.FK_DataLogs_Instances" FromRole="Instances" ToRole="DataLogs" />
+          <NavigationProperty Name="Images" Relationship="DataModel.FK_Images_Instances" FromRole="Instances" ToRole="Images" />
+          <NavigationProperty Name="Roles" Relationship="DataModel.FK_Roles_Instances" FromRole="Instances" ToRole="Roles" />
+          <NavigationProperty Name="UserInstanceUsages" Relationship="DataModel.FK_UserInstanceUsagesUsedInstanceId_Instances" FromRole="Instances" ToRole="UserInstanceUsages" />
+          <NavigationProperty Name="UsersToRoles" Relationship="DataModel.FK_UsersToRoles_Instances" FromRole="Instances" ToRole="UsersToRoles" />
+          <NavigationProperty Name="Variables" Relationship="DataModel.FK_Variables_Instances" FromRole="Instances" ToRole="Variables" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ComponentsToRoles" Relationship="DataModel.FK_ComponentsToRoles_Roles" FromRole="Roles" ToRole="ComponentsToRoles" />
+          <NavigationProperty Name="Instance" Relationship="DataModel.FK_Roles_Instances" FromRole="Roles" ToRole="Instances" />
+          <NavigationProperty Name="UsersToRoles" Relationship="DataModel.FK_UsersToRoles_Roles" FromRole="Roles" ToRole="UsersToRoles" />
+        </EntityType>
+        <EntityType Name="TemporaryCode">
+          <Key>
+            <PropertyRef Name="TemporaryCodeId" />
+          </Key>
+          <Property Name="TemporaryCodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ExpireDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DataModel.FK_TemporaryCodes_Users" FromRole="TemporaryCodes" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="TransactionSeq">
+          <Key>
+            <PropertyRef Name="TransactionSeqId" />
+          </Key>
+          <Property Name="TransactionSeqId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="UserInstanceUsage">
+          <Key>
+            <PropertyRef Name="UserInstanceUsageId" />
+          </Key>
+          <Property Name="UserInstanceUsageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UsedInstanceId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Instance" Relationship="DataModel.FK_UserInstanceUsagesUsedInstanceId_Instances" FromRole="UserInstanceUsages" ToRole="Instances" />
+          <NavigationProperty Name="User" Relationship="DataModel.FK_UserInstanceUsages_Users" FromRole="UserInstanceUsages" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="1024" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="UserFIO" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="RegistrationCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DataLogs" Relationship="DataModel.FK_DataLogs_Users" FromRole="Users" ToRole="DataLogs" />
+          <NavigationProperty Name="TemporaryCodes" Relationship="DataModel.FK_TemporaryCodes_Users" FromRole="Users" ToRole="TemporaryCodes" />
+          <NavigationProperty Name="UserInstanceUsages" Relationship="DataModel.FK_UserInstanceUsages_Users" FromRole="Users" ToRole="UserInstanceUsages" />
+          <NavigationProperty Name="UsersToRoles" Relationship="DataModel.FK_UsersToRoles_Users" FromRole="Users" ToRole="UsersToRoles" />
+        </EntityType>
+        <EntityType Name="UsersToRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Instance" Relationship="DataModel.FK_UsersToRoles_Instances" FromRole="UsersToRoles" ToRole="Instances" />
+          <NavigationProperty Name="Role" Relationship="DataModel.FK_UsersToRoles_Roles" FromRole="UsersToRoles" ToRole="Roles" />
+          <NavigationProperty Name="User" Relationship="DataModel.FK_UsersToRoles_Users" FromRole="UsersToRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Variable">
+          <Key>
+            <PropertyRef Name="VariableId" />
+          </Key>
+          <Property Name="VariableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceId" Type="Int32" Nullable="false" />
+          <Property Name="VariableKey" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="VariableValue" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Instance" Relationship="DataModel.FK_Variables_Instances" FromRole="Variables" ToRole="Instances" />
+        </EntityType>
+        <Association Name="FK_Blobs_Instances">
+          <End Role="Instances" Type="DataModel.Instance" Multiplicity="1" />
+          <End Role="Blobs" Type="DataModel.Blob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="Blobs">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Blobs">
+          <End Role="Blobs" Type="DataModel.Blob" Multiplicity="1" />
+          <End Role="Images" Type="DataModel.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blobs">
+              <PropertyRef Name="BlobId" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="BlobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComponentsToRoles_Components">
+          <End Role="Components" Type="DataModel.Component" Multiplicity="1" />
+          <End Role="ComponentsToRoles" Type="DataModel.ComponentsToRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="ComponentId" />
+            </Principal>
+            <Dependent Role="ComponentsToRoles">
+              <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComponentsToRoles_Instances">
+          <End Role="Instances" Type="DataModel.Instance" Multiplicity="1" />
+          <End Role="ComponentsToRoles" Type="DataModel.ComponentsToRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="ComponentsToRoles">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComponentsToRoles_Roles">
+          <End Role="Roles" Type="DataModel.Role" Multiplicity="1" />
+          <End Role="ComponentsToRoles" Type="DataModel.ComponentsToRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="ComponentsToRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataLogs_Instances">
+          <End Role="Instances" Type="DataModel.Instance" Multiplicity="0..1" />
+          <End Role="DataLogs" Type="DataModel.DataLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="DataLogs">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataLogs_Users">
+          <End Role="Users" Type="DataModel.User" Multiplicity="1" />
+          <End Role="DataLogs" Type="DataModel.DataLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="DataLogs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Instances">
+          <End Role="Instances" Type="DataModel.Instance" Multiplicity="1" />
+          <End Role="Images" Type="DataModel.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_Instances">
+          <End Role="Instances" Type="DataModel.Instance" Multiplicity="1" />
+          <End Role="Roles" Type="DataModel.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInstanceUsagesUsedInstanceId_Instances">
+          <End Role="Instances" Type="DataModel.Instance" Multiplicity="1" />
+          <End Role="UserInstanceUsages" Type="DataModel.UserInstanceUsage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="UserInstanceUsages">
+              <PropertyRef Name="UsedInstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersToRoles_Instances">
+          <End Role="Instances" Type="DataModel.Instance" Multiplicity="1" />
+          <End Role="UsersToRoles" Type="DataModel.UsersToRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="UsersToRoles">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variables_Instances">
+          <End Role="Instances" Type="DataModel.Instance" Multiplicity="1" />
+          <End Role="Variables" Type="DataModel.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instances">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="Variables">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersToRoles_Roles">
+          <End Role="Roles" Type="DataModel.Role" Multiplicity="1" />
+          <End Role="UsersToRoles" Type="DataModel.UsersToRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UsersToRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemporaryCodes_Users">
+          <End Role="Users" Type="DataModel.User" Multiplicity="1" />
+          <End Role="TemporaryCodes" Type="DataModel.TemporaryCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="TemporaryCodes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInstanceUsages_Users">
+          <End Role="Users" Type="DataModel.User" Multiplicity="1" />
+          <End Role="UserInstanceUsages" Type="DataModel.UserInstanceUsage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserInstanceUsages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersToRoles_Users">
+          <End Role="Users" Type="DataModel.User" Multiplicity="1" />
+          <End Role="UsersToRoles" Type="DataModel.UsersToRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersToRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="JohanCornerEntities">
+          <EntitySetMapping Name="Blobs"><EntityTypeMapping TypeName="DataModel.Blob"><MappingFragment StoreEntitySet="Blobs">
+            <ScalarProperty Name="BlobId" ColumnName="BlobId" />
+            <ScalarProperty Name="InstanceId" ColumnName="InstanceId" />
+            <ScalarProperty Name="Data" ColumnName="Data" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Components"><EntityTypeMapping TypeName="DataModel.Component"><MappingFragment StoreEntitySet="Components">
+            <ScalarProperty Name="ComponentId" ColumnName="ComponentId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="IsReadOnlyAccess" ColumnName="IsReadOnlyAccess" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ComponentsToRoles"><EntityTypeMapping TypeName="DataModel.ComponentsToRole"><MappingFragment StoreEntitySet="ComponentsToRoles">
+            <ScalarProperty Name="ComponentToRoleId" ColumnName="ComponentToRoleId" />
+            <ScalarProperty Name="InstanceId" ColumnName="InstanceId" />
+            <ScalarProperty Name="ComponentId" ColumnName="ComponentId" />
+            <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            <ScalarProperty Name="AccessLevel" ColumnName="AccessLevel" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DataLogs"><EntityTypeMapping TypeName="DataModel.DataLog"><MappingFragment StoreEntitySet="DataLogs">
+            <ScalarProperty Name="DataLogId" ColumnName="DataLogId" />
+            <ScalarProperty Name="InstanceId" ColumnName="InstanceId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="OperationTime" ColumnName="OperationTime" />
+            <ScalarProperty Name="TableName" ColumnName="TableName" />
+            <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+            <ScalarProperty Name="Operation" ColumnName="Operation" />
+            <ScalarProperty Name="Details" ColumnName="Details" />
+            <ScalarProperty Name="TransactionNumber" ColumnName="TransactionNumber" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="dev_InstalledScripts"><EntityTypeMapping TypeName="DataModel.dev_InstalledScripts"><MappingFragment StoreEntitySet="dev_InstalledScripts">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="date" ColumnName="date" />
+            <ScalarProperty Name="release" ColumnName="release" />
+            <ScalarProperty Name="iteration" ColumnName="iteration" />
+            <ScalarProperty Name="dbawebPackage" ColumnName="dbawebPackage" />
+            <ScalarProperty Name="filename" ColumnName="filename" />
+            <ScalarProperty Name="versionNumber" ColumnName="versionNumber" />
+            <ScalarProperty Name="success" ColumnName="success" />
+            <ScalarProperty Name="errorMessage" ColumnName="errorMessage" />
+            <ScalarProperty Name="errorLine" ColumnName="errorLine" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Images"><EntityTypeMapping TypeName="DataModel.Image"><MappingFragment StoreEntitySet="Images">
+            <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+            <ScalarProperty Name="InstanceId" ColumnName="InstanceId" />
+            <ScalarProperty Name="BlobId" ColumnName="BlobId" />
+            <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+            <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+            <ScalarProperty Name="ImageSize" ColumnName="ImageSize" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Instances"><EntityTypeMapping TypeName="DataModel.Instance"><MappingFragment StoreEntitySet="Instances">
+            <ScalarProperty Name="InstanceId" ColumnName="InstanceId" />
+            <ScalarProperty Name="InstanceName" ColumnName="InstanceName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Roles"><EntityTypeMapping TypeName="DataModel.Role"><MappingFragment StoreEntitySet="Roles">
+            <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            <ScalarProperty Name="InstanceId" ColumnName="InstanceId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TemporaryCodes"><EntityTypeMapping TypeName="DataModel.TemporaryCode"><MappingFragment StoreEntitySet="TemporaryCodes">
+            <ScalarProperty Name="TemporaryCodeId" ColumnName="TemporaryCodeId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TransactionSeqs"><EntityTypeMapping TypeName="DataModel.TransactionSeq"><MappingFragment StoreEntitySet="TransactionSeqs">
+            <ScalarProperty Name="TransactionSeqId" ColumnName="TransactionSeqId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserInstanceUsages"><EntityTypeMapping TypeName="DataModel.UserInstanceUsage"><MappingFragment StoreEntitySet="UserInstanceUsages">
+            <ScalarProperty Name="UserInstanceUsageId" ColumnName="UserInstanceUsageId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="UsedInstanceId" ColumnName="UsedInstanceId" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="DataModel.User"><MappingFragment StoreEntitySet="Users">
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="Login" ColumnName="Login" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="UserFIO" ColumnName="UserFIO" />
+            <ScalarProperty Name="RegistrationCode" ColumnName="RegistrationCode" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UsersToRoles"><EntityTypeMapping TypeName="DataModel.UsersToRole"><MappingFragment StoreEntitySet="UsersToRoles">
+            <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+            <ScalarProperty Name="InstanceId" ColumnName="InstanceId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Variables"><EntityTypeMapping TypeName="DataModel.Variable"><MappingFragment StoreEntitySet="Variables">
+            <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+            <ScalarProperty Name="InstanceId" ColumnName="InstanceId" />
+            <ScalarProperty Name="VariableKey" ColumnName="VariableKey" />
+            <ScalarProperty Name="VariableValue" ColumnName="VariableValue" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DataEntities">
+        <EntityTypeShape EntityType="DataModel.Blob" Width="1.5" PointX="2.25" PointY="8.625" Height="1.7566536458333344" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Component" Width="1.5" PointX="8" PointY="0.5" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ComponentsToRole" Width="1.5" PointX="7.875" PointY="2.375" Height="2.2496956380208317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.DataLog" Width="1.5" PointX="4.125" PointY="0.5" Height="2.7427376302083353" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.dev_InstalledScripts" Width="1.5" PointX="0.5" PointY="0.5" Height="2.5783902994791656" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Image" Width="1.5" PointX="0.5" PointY="8.625" Height="2.2496956380208317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Instance" Width="1.5" PointX="3.875" PointY="6.625" Height="2.5783902994791674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Role" Width="1.5" PointX="6.25" PointY="2.375" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.TemporaryCode" Width="1.5" PointX="2.375" PointY="0.5" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.TransactionSeq" Width="1.5" PointX="5.875" PointY="0.5" Height="1.0992643229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.UserInstanceUsage" Width="1.5" PointX="0.5" PointY="3.875" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="2.375" PointY="2.625" Height="2.7427376302083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.UsersToRole" Width="1.5" PointX="4.375" PointY="3.625" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Variable" Width="1.5" PointX="2" PointY="5.875" Height="1.7566536458333388" IsExpanded="true" />
+        <AssociationConnector Association="DataModel.FK_Blobs_Instances" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.875" PointY="8.9141951497395837" />
+          <ConnectorPoint PointX="3.75" PointY="8.9141951497395837" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_Images_Blobs" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.5033268229166676" />
+          <ConnectorPoint PointX="2" PointY="9.5033268229166676" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_ComponentsToRoles_Components" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.6875" PointY="2.0923063151041674" />
+          <ConnectorPoint PointX="8.6875" PointY="2.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_ComponentsToRoles_Instances" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.375" PointY="6.625" />
+          <ConnectorPoint PointX="5.75" PointY="6.25" />
+          <ConnectorPoint PointX="8.625" PointY="6.25" />
+          <ConnectorPoint PointX="8.625" PointY="4.6246956380208317" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_ComponentsToRoles_Roles" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.75" PointY="3.4176741536458337" />
+          <ConnectorPoint PointX="7.875" PointY="3.4176741536458337" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_DataLogs_Instances" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.21875" PointY="6.625" />
+          <ConnectorPoint PointX="4.21875" PointY="3.2427376302083353" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_DataLogs_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.875" PointY="2.9338688151041676" />
+          <ConnectorPoint PointX="4.125" PointY="2.9338688151041676" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_Images_Instances" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.625" PointY="9.2033902994791674" />
+          <ConnectorPoint PointX="4.625" PointY="10.659424641927084" />
+          <ConnectorPoint PointX="2" PointY="10.659424641927084" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_Roles_Instances" ManuallyRouted="false">
+          <ConnectorPoint PointX="4" PointY="6.625" />
+          <ConnectorPoint PointX="4" PointY="3.4338688151041676" />
+          <ConnectorPoint PointX="4.135416666666667" PointY="3.4338688151041672" />
+          <ConnectorPoint PointX="4.302083333333333" PointY="3.4338688151041676" />
+          <ConnectorPoint PointX="6.25" PointY="3.4338688151041676" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_UserInstanceUsagesUsedInstanceId_Instances" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.875" PointY="8.15957582291667" />
+          <ConnectorPoint PointX="1.25" PointY="8.15957582291667" />
+          <ConnectorPoint PointX="1.25" PointY="5.7960009765625" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_UsersToRoles_Instances" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.875" PointY="6.625" />
+          <ConnectorPoint PointX="4.875" PointY="5.7103483072916674" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_Variables_Instances" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.875" PointY="7.1283268229166694" />
+          <ConnectorPoint PointX="3.5" PointY="7.1283268229166694" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_UsersToRoles_Roles" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.25" PointY="4.0426741536458337" />
+          <ConnectorPoint PointX="5.875" PointY="4.0426741536458337" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_TemporaryCodes_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.125" PointY="2.625" />
+          <ConnectorPoint PointX="3.125" PointY="2.2566536458333317" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_UserInstanceUsages_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.375" PointY="4.6213688151041659" />
+          <ConnectorPoint PointX="2" PointY="4.6213688151041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_UsersToRoles_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.875" PointY="4.4963688151041659" />
+          <ConnectorPoint PointX="3.9166666666666665" PointY="4.496368815104165" />
+          <ConnectorPoint PointX="4.083333333333333" PointY="4.4963688151041659" />
+          <ConnectorPoint PointX="4.135416666666667" PointY="4.496368815104165" />
+          <ConnectorPoint PointX="4.302083333333333" PointY="4.4963688151041659" />
+          <ConnectorPoint PointX="4.375" PointY="4.4963688151041659" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
