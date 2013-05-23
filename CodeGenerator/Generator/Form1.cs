@@ -31,9 +31,10 @@ namespace Generator
         {
             string[] lines = File.ReadAllLines(textBox1.Text);
             var tableInfoList = new TableInfoList(lines);
-            string folderName = tableInfoList.CreateResultFiles(FileHelper.GetFolderName(textBox1.Text));
-            MessageBox.Show(@"Files have been created in the folder " + folderName);
-            //txtLog.Text = tableInfoList[0].GetRepositoryText();
+            tableInfoList.CreateResultFiles(FileHelper.GetFolderName(textBox1.Text));
+
+            txtLog.Text = tableInfoList.GetSql();
+            MessageBox.Show(@"Все готово, не забудьте обновить модель");
         }
     }
 }

@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CommonClasses.Helpers;
 using CommonClasses.DbClasses;
 using DbLayer.DataModel;
 using Interfaces.DbInterfaces;
@@ -16,7 +15,6 @@ namespace DbLayer.Repositories
 		public int SaveTemporaryCode(ITemporaryCodeDb temporaryCodeDb, int? transactionNumber = null)
 		{
 			TemporaryCode record;
-			var recordOld = new TemporaryCode();
 			if (temporaryCodeDb.TemporaryCodeId == 0)
 			{
 				record = new TemporaryCode();
@@ -25,7 +23,6 @@ namespace DbLayer.Repositories
 			else
 			{
 				record = Context.TemporaryCodes.Where(r => r.TemporaryCodeId == temporaryCodeDb.TemporaryCodeId).First();
-				ReflectionHelper.CopyAllProperties(record, recordOld);
 			}
 
 			record.UserId = temporaryCodeDb.UserId;
@@ -36,11 +33,6 @@ namespace DbLayer.Repositories
 			if (temporaryCodeDb.TemporaryCodeId == 0)
 			{
 				temporaryCodeDb.TemporaryCodeId = record.TemporaryCodeId;
-				LogUnlinkedToDb(UserId, "TemporaryCodes", record.TemporaryCodeId, "I", XmlHelper.GetObjectXml(record), transactionNumber);
-			}
-			else
-			{
-				LogUnlinkedToDb(UserId, "TemporaryCodes", record.TemporaryCodeId, "U", XmlHelper.GetDifferenceXml(recordOld, record), transactionNumber);
 			}
 
 			return temporaryCodeDb.TemporaryCodeId;
@@ -63,7 +55,6 @@ namespace DbLayer.Repositories
 
 		public void DeleteTemporaryCode(int id, string reason = null, int? transactionNumber = null)		{
 			var record = Context.TemporaryCodes.First(r => r.TemporaryCodeId == id);
-				LogUnlinkedToDb(UserId, "TemporaryCodes", record.TemporaryCodeId, "D", XmlHelper.GetObjectXml(record, reason), transactionNumber);
 			Context.DeleteObject(record);
 			Context.SaveChanges();
 		}

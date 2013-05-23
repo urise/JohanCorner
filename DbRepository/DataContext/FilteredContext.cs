@@ -10,14 +10,14 @@ namespace DbLayer.DataContext
 	{
 		#region Properties and Constructors
 
-		private readonly int _companyId;
-		public int CompanyId{ get { return _companyId; } }
-		private readonly AASEntities _context;
+		private readonly int _instanceId;
+		public int InstanceId{ get { return _instanceId; } }
+		private readonly DataEntities _context;
 
-		public FilteredContext(int companyId)
+		public FilteredContext(int instanceId)
 		{
-			_companyId = companyId;
-			_context = new AASEntities();
+			_instanceId = instanceId;
+			_context = new DataEntities();
 		}
 
 		#endregion
@@ -54,32 +54,5 @@ namespace DbLayer.DataContext
         }
         #endregion
 
-        #region All Company Tables
-
-        public IQueryable<TransactionType> AllCompaniesTransactionTypes
-        {
-            get { return _context.TransactionTypes; }
-        }
-
-        public IQueryable<Expression> AllCompaniesExpressions
-        {
-            get { return _context.Expressions; }
-        }
-
-        public IQueryable<Validation> AllCompaniesVlidations
-        {
-            get { return _context.Validations; }
-        }
-
-        public IQueryable<Duty> AllCompaniesDuties
-        {
-            get { return _context.Duties; }
-        }
-
-        public IQueryable<Company> AllCompanies
-        {
-            get { return _context.Companies; }
-        }
-        #endregion
     }
 }

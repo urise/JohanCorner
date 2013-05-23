@@ -1,0 +1,361 @@
+table Currencies:Currency
+	CurrencyId int identity not null PK
+	CurrencyName varchar(32) not null
+	CurrencyShortName varchar(16) not null
+	
+table CurrencyRates:CurrencyRate
+	CurrencyRateId int identity not null PK
+	CompanyId int not null => Companies
+	RateDate datetime not null
+	CurrencyId int not null => Currencies
+	Value decimal(16,2) not null
+	CurrencyClassId int not null => CurrencyClasses
+
+table Companies:Company
+	CompanyId int identity not null PK
+	CompanyName varchar(200) not null
+	CompanyNameShort varchar(200) null
+	PresidentFIO varchar(100) null
+	City varchar(50) null
+	LegalAddress varchar(1000) null
+	ActualAddress varchar(1000) null
+	PhoneNumber varchar(20) null
+	DefaultCurrencyClassId int null => CurrencyClasses(CurrencyClassId)
+	NationalCurrencyId int not null => Currencies(CurrencyId)
+	
+table Users:User
+	UserId int identity not null PK
+	Login varchar(128) not null
+	Password varchar(1024) not null
+	Email varchar(100) null
+	UserFIO varchar(100) null
+	RegistrationCode varchar(10) null
+	IsActive bit not null default 1
+	
+table Employees:Employee
+	EmployeeId int identity not null PK
+	CompanyId int not null => Companies
+	FirstNameUa varchar(256) null
+	SecondNameUa varchar(256) null
+	SurnameUa varchar(256) null
+	FirstNameEn varchar(256) null
+	SurnameEn varchar(256) null
+	Birthday datetime null
+	Sex bit null
+	IsMarried bit null
+	Inn varchar(32) null
+	ForeignPassportSeries varchar(2) null
+	ForeignPassportNumber varchar(6) null
+	ForeignPassportTerm datetime null
+	HasCar bit null
+	CarBrand varchar(128) null
+	CarNumber varchar(32) null
+	ContractNumber varchar(128) null
+	ContractDate datetime null
+	BankAccount varchar(32) null
+	BankName varchar(128) null
+	BankMfo varchar(16) null
+	BankEdrpou varchar(16) null
+	FireDate datetime null
+	CreateActs bit null
+	DutiesByDefault bit not null
+	PaymentDetails varchar(1024) null
+	ImageId int null => Images
+	HireDate datetime null
+	PhoneNumber varchar(128) null
+	CorporateEmail varchar(128) null
+	HasParking bit not null default 0
+
+table PositionCategories:PositionCategory
+	PositionCategoryId int identity not null PK
+	CompanyId int not null => Companies
+	ShortName varchar(256) not null
+	FullName varchar(256) not null
+
+table PositionLevels:PositionLevel
+	PositionLevelId int identity not null PK
+	CompanyId int not null => Companies
+	FullName varchar(128) null
+	ShortName varchar(16) not null
+	SortOrder int not null
+	
+table Positions:Position
+	PositionId int identity not null PK
+	CompanyId int not null => Companies
+	PositionName varchar(256) not null
+	IsActive bit not null
+	PositionCategoryId int null => PositionCategories
+	SortOrder int not null
+
+table PositionLevelLinks:PositionLevelLink
+	PositionLevelLinkId int identity not null PK
+	CompanyId int not null => Companies
+	PositionId int not null => Positions
+	PositionLevelId int not null => PositionLevels
+
+table Salaries:Salary
+	SalaryId int identity not null PK
+	CompanyId int not null => Companies
+	EmployeeId int not null => Employees
+	CurrencyClassId int not null => CurrencyClasses
+	SalaryNominal varchar(1024) not null ENCODED
+	Date datetime not null
+	
+table Variables:Variable
+	VariableId int identity not null PK
+	CompanyId int not null => Companies
+	VariableKey varchar(128) not null
+	VariableValue varchar(max) not null
+	
+table Periods:Period
+	PeriodId int identity not null PK
+	CompanyId int not null => Companies
+	DateFrom datetime not null
+	DateTo datetime not null
+	PeriodName varchar(256) null
+	WorkingDays int null	
+	IsClosed bit not null
+
+table Acts:Act
+	ActId int identity not null PK
+	CompanyId int not null => Companies
+	EmployeeId int not null => Employees
+	ActNumber int not null
+	ContractNumber varchar(32) not null
+	ActDate datetime not null
+	Fio varchar(256) not null
+	FioShort varchar(256) not null
+	Inn varchar(32) not null
+	Account varchar(32) not null
+	BankName varchar(128) not null
+	BankMfo varchar(16) not null
+	BankEdrpou varchar(16) not null
+	PeriodDateFrom datetime not null
+	PeriodDateTo datetime not null
+	TotalAmount varchar(1024) not null ENCODED
+	ActFullName varchar(128) not null
+	PeriodId int not null => Periods
+	ContractDate datetime not null
+	Duties varchar(1024) not null
+	CompanyName varchar(200) not null
+	CompanyNameShort varchar(200) not null
+	PresidentFIO varchar(100) not null
+	City varchar(50) not null
+	LegalAddress varchar(1000) not null
+	ActualAddress varchar(1000) not null
+	PhoneNumber varchar(20) not null
+	
+table TimeUnits:TimeUnit
+	TimeUnitId int not null PK
+	TimeUnitName varchar(128) not null
+
+table TransactionTypes:TransactionType
+	TransactionTypeId int identity not null PK
+	CompanyId int not null => Companies
+	TransactionTypeName varchar(128) not null
+	IsPositive bit not null
+	ValueIsEditable bit not null
+	TimeValueIsEditable bit not null
+	TimeUnitId int null => TimeUnits
+	IsAutomatic bit not null default 0
+	IsActive bit not null default 1
+	GroupOperationEnabled bit not null default 1
+	ExpressionId int null => Expressions
+	IsSalary bit not null default 0
+	IsSingleForPeriod bit not null default 0
+	AutoFillEnabled bit not null default 0
+	IsDependOnFire bit not null default 0
+	CurrencyClassesByDefault bit not null default 1
+	
+table BankPayrolls:BankPayroll
+	BankPayrollId int identity not null PK
+	CompanyId int not null => Companies
+	BankPayrollNumber int not null
+	BankPayrollDate datetime not null
+	PeriodId int not null => Periods
+	Amount varchar(1024) not null ENCODED
+	CreationDate datetime not null
+	
+table BankPayrollRows:BankPayrollRow
+	BankPayrollRowId int identity not null PK
+	CompanyId int not null => Companies
+	EmployeeId int not null => Employees
+	Amount varchar(1024) not null ENCODED
+	Fio varchar(256) not null
+	ContractNumber varchar(128) null
+	ContractDate datetime null
+	Duties varchar(1024) null
+	BankPayrollId int => BankPayrolls
+	PeriodId int not null => Periods
+	CountDate datetime not null
+	BankPayrollRowNumber int
+	Inn varchar(32) null
+	BankAccount varchar(32) null
+	BankName varchar(128) null
+	BankMfo varchar(16) null
+	BankEdrpou varchar(16) null
+	PaymentDetails varchar(1024) null
+	
+table Transactions:Transaction
+	TransactionId int identity not null PK
+	CompanyId int not null => Companies
+	EmployeeId int not null => Employees
+	TransactionTypeId int not null => TransactionTypes
+	PeriodId int not null => Periods
+	Value varchar(1024) not null ENCODED
+	Hours int null
+	Comments varchar(max) null
+	ActId int null => Acts
+	BankPayrollRowId int null => BankPayrollRows
+	CurrencyClassId int not null => CurrencyClasses
+	CurrencyRateId int null => CurrencyRates
+	
+table Duties:Duty
+	DutyId int identity not null PK
+	CompanyId int not null => Companies
+	Name varchar(100) not null
+	Description varchar(max) null
+	IsDefault bit not null default 0
+	SortOrder int null
+	
+table Employee2Duty:Employee2Duty
+	Employee2DutyId int identity not null PK
+	CompanyId int not null => Companies
+	EmployeeId int not null => Employees
+	DutyId int not null => Duties
+
+table DataLogs:DataLog
+	LogId int identity not null PK
+	CompanyId int null => Companies
+	UserId int not null => Users
+	OperationTime datetime not null
+	TableName varchar(128) not null
+	RecordId int not null
+	Operation varchar(1) not null
+	Details varchar(max) not null
+	TransactionNumber int null
+
+table EmployeePositions:EmployeePosition
+	EmployeePositionId int identity not null PK
+	CompanyId int not null => Companies
+	EmployeeId int not null => Employees
+	PositionId int not null => Positions
+	Date datetime not null
+	DateTo datetime null
+	IsMain bit not null default 1
+	IsIo bit not null default 0
+	PositionLevelId int null
+
+table SecretKeys:SecretKey
+	SecretKeyId int identity not null PK
+	CompanyId int not null => Companies
+	KeyHash varchar(1024) null
+
+table Blobs:Blob
+	BlobId int identity not null PK
+	CompanyId int not null => Companies
+	Data varbinary(max) not null
+	
+table Images:Image
+	ImageId int identity not null PK
+	CompanyId int not null => Companies
+	BlobId int not null => Blobs
+	ImageName varchar(128) not null
+	ImageType varchar(4) not null
+	ImageSize int not null
+	
+table UserCompanies:UserCompany
+	UserCompanyId int identity not null PK
+	UserId int not null => Users
+	LinkedCompanyId int not null => Companies(CompanyId)
+	
+table UserCompanyUsages:UserCompanyUsage
+	UserCompanyUsageId int identity not null PK
+	UserId int not null => Users
+	UsedCompanyId int not null => Companies(CompanyId)
+	Date datetime not null
+	
+table EmployeeKids:EmployeeKid
+	EmployeeKidId int identity not null PK
+	CompanyId int not null => Companies
+	EmployeeId int not null => Employees
+	Sex bit not null
+	Birthday datetime not null
+	FirstName varchar(256) null
+	SecondName varchar(256) null
+	Surname varchar(256) null
+
+table TemporaryCodes:TemporaryCode
+	TemporaryCodeId int identity not null PK
+	UserId int not null => Users
+	Code varchar(10) not null
+	ExpireDate datetime not null
+	
+table Expressions:Expression
+	ExpressionId int identity not null PK
+	CompanyId int not null => Companies
+	Name varchar(100) null
+	Formula varchar(max) not null
+	RoundTo int null
+	ErrorMessage varchar(256) null
+	Type int not null int
+	
+table Validations:Validation
+	ValidationId int identity not null PK
+	CompanyId int not null => Companies
+	ExpressionId int not null => Expressions
+	TransactionTypeId int not null => TransactionTypes
+	
+table AuthTokens:AuthToken
+	AuthTokenId int identity not null PK
+	Token varchar(128) not null
+	LinkedCompanyId int not null
+	UserId int not null => Users
+	LastActiveDate datetime not null
+	FinanceKeyIsEntered bit not null
+	FinanceKeyIsNeeded bit not null
+
+table Roles:Role
+	RoleId int identity not null PK
+	CompanyId int not null => Companies
+	Name varchar(128) not null
+	Type int not null
+	
+table UsersToRoles:UsersToRole
+	UserRoleId int identity not null PK
+	CompanyId int not null => Companies
+	UserId int not null => Users
+	RoleId int not null => Roles
+	
+table Components:Component
+	ComponentId int not null PK
+	Name varchar(128) not null
+	IsReadOnlyAccess bit not null
+	
+table ComponentsToRoles:ComponentsToRole
+	ComponentToRoleId int identity not null PK
+	ComponentId int not null => Components
+	RoleId int not null => Roles
+	AccessLevel int not null
+	CompanyId int not null => Companies
+	
+table CurrencyClasses:CurrencyClass
+	CurrencyClassId int identity not null PK
+	CompanyId int not null => Companies
+	CurrencyId int not null => Currencies
+	Code varchar(10) not null
+	Description varchar(100) null
+	IsCashless bit not null
+	IsActive bit not null default 1
+
+table TransactionSeqs:TransactionSeq
+	TransactionSeqId int identity not null PK
+	
+table CurrencyClassLinks:CurrencyClassLink
+	CurrencyClassLinkId int identity not null PK
+	CompanyId int not null => Companies
+	CurrencyClassId int not null => CurrencyClasses
+	TransactionTypeId int not null => TransactionTypes
+	IsDefault bit not null
+
+	

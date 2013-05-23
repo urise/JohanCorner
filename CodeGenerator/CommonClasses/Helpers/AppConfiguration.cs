@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -77,6 +78,70 @@ namespace CommonClasses.Helpers
         {
             get { return ConfigurationManager.AppSettings["NoLogTables"]; }
         }
-    }
 
+        public static string ProjectDir
+        {
+            get { return ConfigurationManager.AppSettings["ProjectDir"]; }
+        }
+
+        public static string CommonClassesDir
+        {
+            get { return ConfigurationManager.AppSettings["CommonClassesDir"]; }
+        }
+
+        public static string DbClassesDir
+        {
+            get { return ConfigurationManager.AppSettings["DbClassesDir"]; }
+        }
+
+        public static string CommonClassesProjectFileName
+        {
+            get { return Path.Combine(ProjectDir, CommonClassesDir, ConfigurationManager.AppSettings["CommonClassesProjectFileName"]); }
+        }
+
+        public static string InterfacesDir
+        {
+            get { return ConfigurationManager.AppSettings["InterfacesDir"]; }
+        }
+
+        public static string DbInterfacesDir
+        {
+            get { return ConfigurationManager.AppSettings["DbInterfacesDir"]; }
+        }
+
+        public static string InterfacesProjectFileName
+        {
+            get { return Path.Combine(ProjectDir, InterfacesDir, ConfigurationManager.AppSettings["InterfacesProjectFileName"]); }
+        }
+
+        public static string DbRepositoryDir
+        {
+            get { return ConfigurationManager.AppSettings["DbRepositoryDir"]; }
+        }
+
+        public static string RepositoriesDir
+        {
+            get { return ConfigurationManager.AppSettings["RepositoriesDir"]; }
+        }
+
+        public static string DbRepositoryProjectFileName
+        {
+            get { return Path.Combine(ProjectDir, DbRepositoryDir, ConfigurationManager.AppSettings["DbRepositoryProjectFileName"]); }
+        }
+
+        public static string ConversionsFileName
+        {
+            get { return Path.Combine(ProjectDir, DbRepositoryDir, ConfigurationManager.AppSettings["ConversionsFileName"]); }
+        }
+
+        public static string ImplicitsFileName
+        {
+            get { return Path.Combine(ProjectDir, DbRepositoryDir, ConfigurationManager.AppSettings["ImplicitsFileName"]); }
+        }
+
+        public static string FilteredContextAutoMethodsFileName
+        {
+            get { return Path.Combine(ProjectDir, DbRepositoryDir, ConfigurationManager.AppSettings["FilteredContextAutoMethodsFileName"]); }
+        }
+    }
 }

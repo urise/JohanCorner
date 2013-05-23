@@ -22,10 +22,10 @@ namespace DbLayer.Repositories
             get { return _context; }
         }
 
-        protected int _companyId;
-        public int CompanyId
+        protected int _instanceId;
+        public int InstanceId
         {
-            get { return _companyId; }
+            get { return _instanceId; }
         }
         protected bool _releaseContext;
         private AuthInfo _authInfo;
@@ -35,25 +35,25 @@ namespace DbLayer.Repositories
             get { return _authInfo == null ? 0 : _authInfo.UserId; }
         }
 
-        public void SetCompanyId(int companyId)
+        public void SetCompanyId(int instanceId)
         {
-            if (_companyId != 0) 
+            if (_instanceId != 0)
                 throw new Exception("Cannot set company id for DbRepository if it's already defined");
-            _authInfo.CompanyId = companyId;
-            _companyId = companyId;
+            _authInfo.CompanyId = instanceId;
+            _instanceId = instanceId;
         }
 
         public DbRepository(int companyId)
         {
             _context = new FilteredContext(companyId);
-            _companyId = companyId;
+            _instanceId = companyId;
             _releaseContext = true;
         }
 
         public DbRepository(AuthInfo authInfo)
         {
             _authInfo = authInfo;
-            _companyId = authInfo.CompanyId;
+            _instanceId = authInfo.CompanyId;
             _context = new FilteredContext(authInfo.CompanyId);
             _releaseContext = true;
         }
@@ -62,7 +62,7 @@ namespace DbLayer.Repositories
         //{
         //    _context = context;
         //    _releaseContext = false;
-        //    _companyId = context.CompanyId;
+        //    _companyId = context.InstanceId;
         //}
 
         #endregion
@@ -81,19 +81,19 @@ namespace DbLayer.Repositories
 
         protected void LogToDb(int userId, string tableName, int recordId, string operation, string details, int? transactionNumber)
         {
-            InsertLogToDb(_companyId, userId, tableName, recordId, operation, details, transactionNumber);
+            InsertLogToDb(_instanceId, userId, tableName, recordId, operation, details, transactionNumber);
         }
 
         protected void LogUnlinkedToDb(int userId, string tableName, int recordId, string operation, string details, int? transactionNumber)
         {
-            InsertLogToDb(_companyId == 0 ? (int?)null : _companyId, userId, tableName, recordId, operation, details, transactionNumber);
+            InsertLogToDb(_instanceId == 0 ? (int?)null : _instanceId, userId, tableName, recordId, operation, details, transactionNumber);
         }
 
-        private void InsertLogToDb(int? companyId, int userId, string tableName, int recordId, string operation, string details, int? transactionNumber)
+        private void InsertLogToDb(int? instanceId, int userId, string tableName, int recordId, string operation, string details, int? transactionNumber)
         {
             var dataLog = new DataLog
             {
-                CompanyId = companyId,
+                InstanceId = instanceId,
                 UserId = userId,
                 OperationTime = DateTime.Now,
                 TableName = tableName,

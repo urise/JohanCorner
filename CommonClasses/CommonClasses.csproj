@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="DbClasses\BlobDb.cs" />
     <Compile Include="DbClasses\ComponentDb.cs" />
     <Compile Include="DbClasses\ComponentsToRoleDb.cs" />
@@ -53,7 +54,23 @@
     <Compile Include="DbClasses\UserInstanceUsageDb.cs" />
     <Compile Include="DbClasses\UsersToRoleDb.cs" />
     <Compile Include="DbClasses\VariableDb.cs" />
+    <Compile Include="DbRepositoryInterface\IDbRepository.cs" />
+    <Compile Include="Helpers\ConversionHelper.cs" />
+    <Compile Include="Helpers\CryptHelper.cs" />
+    <Compile Include="Helpers\ReflectionHelper.cs" />
+    <Compile Include="Helpers\TripleDesProvider.cs" />
+    <Compile Include="Helpers\XmlHelper.cs" />
+    <Compile Include="InfoClasses\AuthInfo.cs" />
+    <Compile Include="Messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles\AccessTier.cs" />
+    <Compile Include="Roles\UserAccess.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{D9CF05BF-F418-496B-8E8B-F672280ABD70}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

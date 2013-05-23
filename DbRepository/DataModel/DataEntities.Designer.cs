@@ -18,58 +18,58 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("DataModel", "FK_Blobs_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Instance), "Blobs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.Blob), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_Images_Blobs", "Blobs", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Blob), "Images", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.Image), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_ComponentsToRoles_Components", "Components", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Component), "ComponentsToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.ComponentsToRole), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_ComponentsToRoles_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Instance), "ComponentsToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.ComponentsToRole), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_ComponentsToRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Role), "ComponentsToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.ComponentsToRole), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_DataLogs_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DbRepository.DataModel.Instance), "DataLogs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.DataLog), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_DataLogs_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.User), "DataLogs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.DataLog), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_Images_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Instance), "Images", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.Image), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_Roles_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Instance), "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.Role), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_UserInstanceUsagesUsedInstanceId_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Instance), "UserInstanceUsages", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.UserInstanceUsage), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_UsersToRoles_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Instance), "UsersToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.UsersToRole), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_Variables_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Instance), "Variables", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.Variable), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_UsersToRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.Role), "UsersToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.UsersToRole), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_TemporaryCodes_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.User), "TemporaryCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.TemporaryCode), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_UserInstanceUsages_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.User), "UserInstanceUsages", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.UserInstanceUsage), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_UsersToRoles_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbRepository.DataModel.User), "UsersToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbRepository.DataModel.UsersToRole), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_Blobs_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Instance), "Blobs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.Blob), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_Images_Blobs", "Blobs", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Blob), "Images", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.Image), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_ComponentsToRoles_Components", "Components", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Component), "ComponentsToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.ComponentsToRole), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_ComponentsToRoles_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Instance), "ComponentsToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.ComponentsToRole), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_ComponentsToRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Role), "ComponentsToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.ComponentsToRole), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_DataLogs_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DbLayer.DataModel.Instance), "DataLogs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.DataLog), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_DataLogs_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.User), "DataLogs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.DataLog), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_Images_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Instance), "Images", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.Image), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_Roles_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Instance), "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.Role), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_UserInstanceUsagesUsedInstanceId_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Instance), "UserInstanceUsages", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.UserInstanceUsage), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_UsersToRoles_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Instance), "UsersToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.UsersToRole), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_Variables_Instances", "Instances", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Instance), "Variables", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.Variable), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_UsersToRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.Role), "UsersToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.UsersToRole), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_TemporaryCodes_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.User), "TemporaryCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.TemporaryCode), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_UserInstanceUsages_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.User), "UserInstanceUsages", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.UserInstanceUsage), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_UsersToRoles_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DbLayer.DataModel.User), "UsersToRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DbLayer.DataModel.UsersToRole), true)]
 
 #endregion
 
-namespace DbRepository.DataModel
+namespace DbLayer.DataModel
 {
     #region Contexts
     
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    public partial class JohanCornerEntities : ObjectContext
+    public partial class DataEntities : ObjectContext
     {
         #region Constructors
     
         /// <summary>
-        /// Initializes a new JohanCornerEntities object using the connection string found in the 'JohanCornerEntities' section of the application configuration file.
+        /// Initializes a new DataEntities object using the connection string found in the 'DataEntities' section of the application configuration file.
         /// </summary>
-        public JohanCornerEntities() : base("name=JohanCornerEntities", "JohanCornerEntities")
+        public DataEntities() : base("name=DataEntities", "DataEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new JohanCornerEntities object.
+        /// Initialize a new DataEntities object.
         /// </summary>
-        public JohanCornerEntities(string connectionString) : base(connectionString, "JohanCornerEntities")
+        public DataEntities(string connectionString) : base(connectionString, "DataEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new JohanCornerEntities object.
+        /// Initialize a new DataEntities object.
         /// </summary>
-        public JohanCornerEntities(EntityConnection connection) : base(connection, "JohanCornerEntities")
+        public DataEntities(EntityConnection connection) : base(connection, "DataEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();

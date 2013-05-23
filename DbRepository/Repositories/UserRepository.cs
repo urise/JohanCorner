@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CommonClasses.Helpers;
 using CommonClasses.DbClasses;
 using DbLayer.DataModel;
 using Interfaces.DbInterfaces;
@@ -16,7 +15,6 @@ namespace DbLayer.Repositories
 		public int SaveUser(IUserDb userDb, int? transactionNumber = null)
 		{
 			User record;
-			var recordOld = new User();
 			if (userDb.UserId == 0)
 			{
 				record = new User();
@@ -25,7 +23,6 @@ namespace DbLayer.Repositories
 			else
 			{
 				record = Context.Users.Where(r => r.UserId == userDb.UserId).First();
-				ReflectionHelper.CopyAllProperties(record, recordOld);
 			}
 
 			record.Login = userDb.Login;
@@ -39,11 +36,6 @@ namespace DbLayer.Repositories
 			if (userDb.UserId == 0)
 			{
 				userDb.UserId = record.UserId;
-				LogUnlinkedToDb(UserId, "Users", record.UserId, "I", XmlHelper.GetObjectXml(record), transactionNumber);
-			}
-			else
-			{
-				LogUnlinkedToDb(UserId, "Users", record.UserId, "U", XmlHelper.GetDifferenceXml(recordOld, record), transactionNumber);
 			}
 
 			return userDb.UserId;
@@ -66,7 +58,6 @@ namespace DbLayer.Repositories
 
 		public void DeleteUser(int id, string reason = null, int? transactionNumber = null)		{
 			var record = Context.Users.First(r => r.UserId == id);
-				LogUnlinkedToDb(UserId, "Users", record.UserId, "D", XmlHelper.GetObjectXml(record, reason), transactionNumber);
 			Context.DeleteObject(record);
 			Context.SaveChanges();
 		}

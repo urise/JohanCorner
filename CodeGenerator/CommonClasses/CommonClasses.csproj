@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CommonClasses</RootNamespace>
     <AssemblyName>CommonClasses</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -31,6 +31,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -69,8 +70,11 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Helpers\AppConfiguration.cs" />
+    <Compile Include="Helpers\CodeHelper.cs" />
     <Compile Include="Helpers\DataTypeHelper.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\IMethodData.cs" />
+    <Compile Include="Helpers\PlaceInFile.cs" />
     <Compile Include="Helpers\TextHelper.cs" />
     <Compile Include="InfoClasses\ColumnInfo.cs" />
     <Compile Include="InfoClasses\TableInfo.cs" />

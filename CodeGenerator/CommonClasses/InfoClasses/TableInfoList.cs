@@ -108,7 +108,7 @@ namespace CommonClasses.InfoClasses
             var result = new StringBuilder();
             result.AddHeaderWarning();
             result.AppendLine("using System.Linq;");
-            result.AppendLine("using " + AppConfiguration.DbModelNamespace);
+            result.AppendLine("using " + AppConfiguration.DbModelNamespace + ";");
             result.AppendLine();
             result.AppendLine("namespace " + AppConfiguration.FilteredContextNamespace);
             result.AppendLine("{");
@@ -143,37 +143,32 @@ namespace CommonClasses.InfoClasses
             return result.ToString();
         }
 
-        public string CreateResultFiles(string baseFolder)
+        public void CreateResultFiles(string baseFolder)
         {
-            string folderName = FileHelper.CreateDateNameFolder(baseFolder);
-            File.WriteAllText(Path.Combine(folderName, "dbscript.sql"), GetSql());
-            File.WriteAllText(Path.Combine(folderName, "Implicits.cs"), GetImplicitText());
-            File.WriteAllText(Path.Combine(folderName, "Conversions.cs"), GetConversionsText());
-            File.WriteAllText(Path.Combine(folderName, "ServiceProxyAutoMethods.cs"), GetServiceProxyAutoMethods());
-            File.WriteAllText(Path.Combine(folderName, "FilteredContextAutoMethods.cs"), GetFilteredContext());
+            //string folderName = FileHelper.CreateDateNameFolder(baseFolder);
+            //File.WriteAllText(Path.Combine(folderName, "dbscript.sql"), GetSql());
+            File.WriteAllText(AppConfiguration.ImplicitsFileName, GetImplicitText());
+            File.WriteAllText(AppConfiguration.ConversionsFileName, GetConversionsText());
+            //File.WriteAllText(Path.Combine(folderName, "ServiceProxyAutoMethods.cs"), GetServiceProxyAutoMethods());
+            File.WriteAllText(AppConfiguration.FilteredContextAutoMethodsFileName, GetFilteredContext());
 
-            string dbClassesFolder = Path.Combine(folderName, "DbClasses");
-            Directory.CreateDirectory(dbClassesFolder);
-            string repositoryFolder = Path.Combine(folderName, "DbRepository");
-            Directory.CreateDirectory(repositoryFolder);
-            string dbInterfacesFolder = Path.Combine(folderName, "DbInterfaces");
-            if (AppConfiguration.UseInterfacesForDbClasses)
-            {
-                Directory.CreateDirectory(dbInterfacesFolder);
-            }
             foreach (TableInfo tableInfo in this)
             {
-                File.WriteAllText(Path.Combine(dbClassesFolder, tableInfo.ModelTableName + "Db.cs"), 
-                    tableInfo.GetDbClassText());
-                File.WriteAllText(Path.Combine(repositoryFolder, tableInfo.ModelTableName + "Repository.cs"),
-                    tableInfo.GetRepositoryText());
+                CodeHelper.AddOrChangeFile(AppConfiguration.CommonClassesDir, 
+                    Path.Combine(AppConfiguration.DbClassesDir, tableInfo.ModelTableName + "Db.cs"),
+                    tableInfo.GetDbClassText(), AppConfiguration.CommonClassesProjectFileName);
+
+                CodeHelper.AddOrChangeFile(AppConfiguration.DbRepositoryDir,
+                    Path.Combine(AppConfiguration.RepositoriesDir, tableInfo.ModelTableName + "Repository.cs"),
+                    tableInfo.GetRepositoryText(), AppConfiguration.DbRepositoryProjectFileName);
+
                 if (AppConfiguration.UseInterfacesForDbClasses)
                 {
-                    File.WriteAllText(Path.Combine(dbInterfacesFolder, "I" + tableInfo.ModelTableName + "Db.cs"),
-                                      tableInfo.GetDbInterfaceText());
+                    CodeHelper.AddOrChangeFile(AppConfiguration.InterfacesDir,
+                        Path.Combine(AppConfiguration.DbInterfacesDir, "I" + tableInfo.ModelTableName + "Db.cs"),
+                        tableInfo.GetDbInterfaceText(), AppConfiguration.InterfacesProjectFileName);
                 }
             }
-            return folderName;
         }
     }
 }
