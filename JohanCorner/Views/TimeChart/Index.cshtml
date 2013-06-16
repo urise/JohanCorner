@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Time Chart</h2>
+<table id="myTable">
+    @for(int row = 0; row < 30; row++)
+    {
+        <tr height="20">
+            @for(int col = 0; col < 24*2; col++)
+            {
+                <td width="20"></td>
+            }
+        </tr>
+    }
+
+</table>
+@Scripts.Render("~/Scripts/hltable.js")
+<script type="text/javascript">
+    
+    highlightTableCells("myTable", "hoverRow", "clickedRow");
+
+</script>
