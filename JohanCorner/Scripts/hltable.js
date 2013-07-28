@@ -80,7 +80,7 @@ function highlightTableRows(tableId, hoverClass, clickClass, multiple)
 }
 
 function highlightTableCells(tableId, hoverClass, clickClass, multiple) {
-    var table = document.getElementById(tableId);
+    var table = $("#" + tableId)[0];
 
     //если не был передан четвертый аргумент, то по умолчанию принимаем его как true
     if (typeof multiple == 'undefined') multiple = true;
@@ -95,11 +95,11 @@ function highlightTableCells(tableId, hoverClass, clickClass, multiple) {
             var elem = e.target || e.srcElement;
             while (!elem.tagName || !elem.tagName.match(/td|th|table/i)) elem = elem.parentNode;
 
-            if (elem.className.substring(0, 5) == "cell-") {
-                var num = elem.className.substring(5);
-                var headElem = document.getElementsByClassName("column-header-" + num);
-                headElem.style.fontWeight = "bold";
-            }
+            //if (elem.className.substring(0, 5) == "cell-") {
+            //    var num = elem.className.substring(5);
+            //    var headElem = document.getElementById("column-header-" + num);
+            //    headElem.style.fontWeight = "bold";
+            //}
 
             //Если событие связано с элементом TD или TH из раздела TBODY
             if (elem.parentNode.tagName == 'TR' && elem.parentNode.parentNode.tagName == 'TBODY') {
